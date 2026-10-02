@@ -22,9 +22,9 @@ func main() {
 	s4 := original[:]
 	fmt.Printf("s4 (original[:]): %v, len: %d, cap: %d\n", s4, len(s4), cap(s4))
 
-	slices.Contains(s4, 8)
+	print(slices.Contains(s4, 29))
 	s4 = append(s4, 1000)
 
-	fmt.Printf("s4 (modified original[:]): %v, len: %d, cap: %d\n", s4, len(s4), cap(s4))
+	fmt.Printf("s4 (modified original[:]): %v, len: %d, cap: %d new cap %d\n", s4, len(s4), cap(original), cap(s4))
 
 }

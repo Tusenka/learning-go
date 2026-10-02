@@ -1,11 +1,11 @@
 module learning-go
 
-go 1.24
+go 1.26.0
 
 require (
 	github.com/mattn/go-sqlite3 v1.14.28
 	github.com/stretchr/testify v1.11.1
-	golang.org/x/crypto v0.39.0
+	golang.org/x/crypto v0.57.0
 )
 
 require (

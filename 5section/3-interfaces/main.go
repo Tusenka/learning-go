@@ -31,7 +31,7 @@ func displayPerson(p Person) {
 }
 
 func main() {
-
+	var _ Person = (*Employee)(nil)
 	//joe := Employee{
 	//	ID:   1,
 	//	Name: "Joe",

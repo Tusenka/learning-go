@@ -46,15 +46,11 @@ func divide(a, b int) (int, error) {
 
 func main() {
 
-	value, err := divide(1001, 1)
+	err := DoSomething()
 	if err != nil {
-		if errors.Is(err, ErrDivisionByZero) {
-			fmt.Println("divide by zero")
-		} else if errors.Is(err, ErrNumTooLarge) {
-			fmt.Println("number too large")
-		}
+		fmt.Println("NewOpError", err)
 		return
 	}
 
-	fmt.Println(value)
+	fmt.Println()
 }

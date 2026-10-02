@@ -15,10 +15,11 @@ const (
 type LogLevel int
 
 const (
-	LogError LogLevel = iota
-	LogWarn
-	LogInfo
+	LogTrace LogLevel = iota
 	LogDebug
+	LogInfo
+	LogWarn
+	LogError
 	LogFatal
 )
 
@@ -27,9 +28,25 @@ func main() {
 	fmt.Println(Sunday)
 	fmt.Println(Monday)
 	fmt.Println(Tuesday)
-	fmt.Println(Wednesday)
-	fmt.Println(Thursday)
-	fmt.Println(Friday)
-	fmt.Println(Saturday)
+	printLogLevel(LogTrace)
+	printLogLevel(LogInfo)
+	printLogLevel(LogWarn)
+	printLogLevel(LogFatal)
+	printLogLevel(10)
 
+}
+
+var levelNames = []string{"Trace", "Debug", "Info", "Warn", "Error", "Fatal"}
+
+func (l LogLevel) String() string {
+	if l < LogTrace || l > LogFatal {
+		return "Unknown"
+	}
+
+	return levelNames[l]
+
+}
+
+func printLogLevel(level LogLevel) {
+	fmt.Printf("LogLevel: %d, %s \n", level, level.String())
 }

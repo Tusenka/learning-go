@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"learning-go/7section/6-project/model"
 	"os"
 	"regexp"
 	"strings"
@@ -74,5 +75,7 @@ ANOTHER_KEY_NO_VALUE =`
 	for k, v := range config {
 		fmt.Printf("%s=%q\n", k, v)
 	}
+
+	println(model.VERSION)
 
 }

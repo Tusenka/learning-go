@@ -14,6 +14,7 @@ type EmailData struct {
 	Body          string
 	Items         []string // demo a loop
 	UnreadCount   int
+	SomeCount     int
 }
 
 func main() {
@@ -21,9 +22,23 @@ func main() {
 	fmt.Println("--- Text template example ---")
 
 	emailTemplate := `
+Hi! 
+{{if .RecipientName}}
+	H!!{{ .RecipientName }}!
+{{else}}
+	Anonymous!
+{{ end }}
 Subject: {{ .Subject }}
 
 {{.Body}}
+
+<ul>
+{{range .Items}}
+    <li>{{.}}</li>
+{{else}}
+    <li>Нет задач</li>
+{{end}}
+</ul>
 
 {{if .Items}}
    Related Items:
@@ -42,7 +57,9 @@ You have no messages
 - Thanks
 {{.SenderName}}
 `
+	tmpl2, _ := template.New("email-new").Parse(emailTemplate)
 	tmpl, err := template.New("email-message").Parse(emailTemplate)
+
 	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(1)
@@ -59,6 +76,8 @@ You have no messages
 
 	var output strings.Builder
 
+	err = tmpl2.Execute(&output, data)
+	println(output.String())
 	err = tmpl.Execute(&output, data)
 	if err != nil {
 		fmt.Println(err.Error())

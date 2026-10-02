@@ -20,6 +20,10 @@ func (e *Employee) FullName() string {
 	return e.FirstName + " " + e.LastName
 }
 
+//	func (e *int) mm() int{
+//		return e*2
+//	}
+
 func (e *Employee) Deactivate() {
 	e.IsActive = false
 }
@@ -43,6 +47,9 @@ func deactivate(e *Employee) {
 	e.IsActive = false
 }
 
+func (e *Employee) Activate() {
+	e.IsActive = true
+}
 func main() {
 
 	jane := Employee{
@@ -57,7 +64,9 @@ func main() {
 
 	fmt.Printf("%+v\n", jane)
 	jane.Deactivate()
-	//deactivate(&jane)
+	deactivate(&jane)
+	fmt.Printf("%+v\n", jane)
+	jane.Activate()
 	fmt.Printf("%+v\n", jane)
 
 	jane.SetJoinedAt(time.Now().Add(100000000 * time.Minute))

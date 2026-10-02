@@ -2,8 +2,15 @@ package main
 
 import "fmt"
 
+type MyString string
+
 type Number interface {
-	int | float64 | float32 | string
+	int | float64 | float32 | MyString
+	fmt.Stringer
+}
+
+func (ms MyString) String() string {
+	return string(ms)
 }
 
 func Sum[T Number](numbers ...T) T {
@@ -15,7 +22,8 @@ func Sum[T Number](numbers ...T) T {
 }
 
 func main() {
+	// v := Sum("Jane", "Mark") --bad ides
 
-	v := Sum[string]("Jane", "Mark")
+	v := Sum[MyString]("Jane", "Mark")
 	fmt.Printf("%T\n", v)
 }
