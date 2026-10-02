@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 
-	studentGrades := map[string]int{
+	var studentGrades = map[string]int{
 		"Alice": 90,
 		"James": 85,
 		"Dan":   60,
@@ -26,8 +26,8 @@ func main() {
 
 	fmt.Printf("%+v\n", studentGrades)
 
-	configs := make(map[string]int)
-	fmt.Printf("%+v %T\n", configs, configs)
+	var configs map[string]int
+	fmt.Printf("%+v %T\n", configs == nil, configs)
 
 	if configs == nil {
 		fmt.Printf("Config is nil")

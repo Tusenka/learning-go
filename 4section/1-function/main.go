@@ -19,10 +19,14 @@ func calculateArea(width float64, height float64) float64 {
 	}
 	return width * height
 }
+func a(a, b int) string {
+	return ""
+}
 func main() {
 	greet("Bob Wonderland")
 	add(1, 2)
 
 	area := calculateArea(4, 4)
 	fmt.Println(area)
+	a(1, 2)
 }

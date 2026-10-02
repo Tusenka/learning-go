@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-var productPrices = map[string]float64{
+const productPrices = map[string]float64{
 	"TSHIRT": 20.00,
 	"MUG":    12.50,
 	"HAT":    18.00,
@@ -14,6 +14,7 @@ var productPrices = map[string]float64{
 
 func calculateItemPrice(itemCode string) (float64, bool) {
 	basePrice, found := productPrices[itemCode]
+	itemCode[0] = '1'
 	if !found {
 		if strings.HasSuffix(itemCode, "_SALE") {
 			originalItemCode := strings.TrimSuffix(itemCode, "_SALE")

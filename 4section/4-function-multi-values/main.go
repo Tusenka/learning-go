@@ -15,10 +15,13 @@ func divide(a, b int) (int, error) {
 	return a / b, nil
 }
 
-func splitName(fullName string) (firstName, lastName string) {
+func splitName(fullName string) (firstName, lastName string, err error) {
 	parts := strings.Split(fullName, " ")
 	firstName = parts[0]
 	lastName = parts[1]
+
+	//firstName = parts[1]
+	err = nil
 
 	return
 }
@@ -34,7 +37,7 @@ func main() {
 		fmt.Println(value)
 	}
 
-	firstName, lastName := splitName("Joseph Abah")
+	firstName, lastName, err := splitName("Joseph Abah")
 
 	fmt.Println(firstName, lastName)
 }

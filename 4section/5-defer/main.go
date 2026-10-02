@@ -6,14 +6,7 @@ import (
 )
 
 func simpleDefer() {
-	fmt.Println("Function simpleDefer: Start")
 	defer fmt.Println("Function simpleDefer: deferred")
-	fmt.Println("Function simpleDefer: Middle")
-	fmt.Println("Function simpleDefer: Middle")
-	fmt.Println("Function simpleDefer: Middle")
-	fmt.Println("Function simpleDefer: Middle")
-	fmt.Println("Function simpleDefer: Middle")
-
 }
 
 func lifoSimpleDefer() {
@@ -27,8 +20,13 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	defer file.Close()
-	//simpleDefer()
+	defer func(file *os.File) {
+		err := file.Close()
+		if err != nil {
+
+		}
+	}(file)
+	simpleDefer()
 	lifoSimpleDefer()
 
 	fmt.Println("Last in main()")

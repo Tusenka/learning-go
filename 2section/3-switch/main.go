@@ -28,7 +28,7 @@ func main() {
 		fmt.Println("Good evening")
 	}
 
-	checkType := func(i interface{}) {
+	checkType := func(i interface{}) string {
 		switch v := i.(type) {
 		case int:
 			fmt.Printf("Integer: %d\n", v)
@@ -39,11 +39,11 @@ func main() {
 		default:
 			fmt.Printf("Unknown type: %T\n", v)
 		}
+		return "123"
 	}
 
 	checkType(21)
 	checkType("Test")
 	checkType(true)
 	checkType(312.23)
-
 }

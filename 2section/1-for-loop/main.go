@@ -29,7 +29,7 @@ func main() {
 
 	fmt.Println("------------ skipping---------")
 
-	for i := 1; i <= 10; i++ {
+	for i := 1; i <= 10; i += 3 {
 		if i%2 == 0 {
 			continue
 		}
@@ -38,8 +38,12 @@ func main() {
 
 	fmt.Println("------------ array---------")
 	items := [3]string{"Go", "Python", "Java"}
-	for index, _ := range items {
-		fmt.Println(items[index])
+	for index, x := range items {
+		fmt.Println(index, x)
+	}
+
+	for _, x := range items {
+		fmt.Println(x)
 	}
 
 }

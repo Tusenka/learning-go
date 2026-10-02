@@ -20,6 +20,9 @@ func (e *Employee) FullName() string {
 	return e.FirstName + " " + e.LastName
 }
 
+//	func (e *int) mm() int{
+//		return e*2
+//	}
 func (e *Employee) Deactivate() {
 	e.IsActive = false
 }
