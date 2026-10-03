@@ -10,6 +10,7 @@ func ping(ctx context.Context, ch chan string) {
 	for {
 		select {
 		case <-ctx.Done():
+			println("ping done")
 			return
 		case ch <- fmt.Sprintf("ping: %v", time.Now()):
 			time.Sleep(1 * time.Second)
@@ -21,6 +22,7 @@ func pong(ctx context.Context, ch chan string) {
 	for {
 		select {
 		case <-ctx.Done():
+			println("pong done")
 			return
 		case ch <- fmt.Sprintf("pong: %v", time.Now()):
 			time.Sleep(1 * time.Second)
@@ -33,7 +35,7 @@ func main() {
 	defer cancel()
 
 	pingerCh := make(chan string)
-	done := make(chan struct{})
+	done := make(chan bool)
 
 	go ping(ctx, pingerCh)
 	go pong(ctx, pingerCh)
@@ -45,7 +47,7 @@ func main() {
 			case <-timeout:
 				fmt.Println("operation completed")
 				close(pingerCh)
-				done <- struct{}{}
+				done <- true
 				return
 			case msg := <-pingerCh:
 				fmt.Println(msg)

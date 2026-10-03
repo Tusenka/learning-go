@@ -25,11 +25,13 @@ func main() {
 
 	totalJobs := 5
 
-	for i := 0; i < totalJobs; i++ {
+	for i := range totalJobs {
 		wg.Add(1)
 		go sayHello(fmt.Sprintf("JOB %d", i), time.Second, &wg)
-	}
+		//go sayHello(fmt.Sprintf("JOB %d", i), time.Second, wg)
+		// wg.Done() //do not to that!
 
+	}
 	fmt.Println("Hello from Main() Goroutine")
 
 	wg.Wait()

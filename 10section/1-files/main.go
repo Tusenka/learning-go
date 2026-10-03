@@ -43,7 +43,13 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer newFile.Close()
+	defer func() {
+		err := newFile.Close()
+
+		if err != nil {
+			log.Fatal(err)
+		}
+	}()
 
 	_, _ = newFile.WriteString(fmt.Sprintf("- C\n"))
 	_, _ = newFile.WriteString(fmt.Sprintf("- Ruby\n"))
