@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"learning-go/7section/6-project/model"
+	model "learning-go/7section/6-project/model"
 	"os"
 	"regexp"
 	"strings"
@@ -77,5 +77,5 @@ ANOTHER_KEY_NO_VALUE =`
 	}
 
 	println(model.VERSION)
-
+	model.Text(model.Color{Value: 30})
 }

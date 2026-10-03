@@ -119,7 +119,7 @@ func ConcurrentDownloader(urls []string, destDir string, maxConcurrent int) erro
 		}(url)
 	}
 
-	go func() {
+	defer func() {
 		wg.Wait()
 		close(results)
 	}()

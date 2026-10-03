@@ -8,7 +8,7 @@ import (
 
 func main() {
 
-	dir := "Downloads/static/images"
+	dir := "./Downloads/static/images"
 	if err := os.MkdirAll(filepath.Clean(dir), 0755); err != nil {
 		log.Fatal(err)
 	}

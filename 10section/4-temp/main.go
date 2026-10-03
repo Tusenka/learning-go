@@ -19,8 +19,12 @@ func main() {
 
 	_, err = tempFile.Write([]byte("Hello World\n"))
 	if err != nil {
-		log.Fatal(err)
-		tempFile.Close()
+		defer log.Fatal(err)
+		err := tempFile.Close()
+		if err != nil {
+			log.Fatal(err)
+			return
+		}
 		return
 	}
 

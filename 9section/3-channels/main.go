@@ -16,13 +16,13 @@ func main() {
 	users := make(chan user) // Unbuffered channel
 
 	go func() {
-		fmt.Println("Sending a message to messages channel")
-		messages <- "Hello from messages channel"
+		fmt.Println("Sending a message to messages channel 1")
+		messages <- "Hello from messages channel 1 "
 	}()
 
 	go func() {
-		fmt.Println("Sending a message to messages channel")
-		messages <- "Hello from messages channel"
+		fmt.Println("Sending a message to messages channel 2")
+		messages <- "Hello from messages channel 2"
 	}()
 
 	go func() {

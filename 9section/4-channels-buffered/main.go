@@ -13,8 +13,12 @@ func main() {
 	messages <- "send message"
 	messages <- "third message"
 
-	fmt.Println(<-messages)
-	fmt.Println(<-messages)
-	fmt.Println(<-messages)
+	// messages <- "four message" -- Deadlock
 
+	fmt.Println(<-messages)
+	messages <- "four message"
+
+	fmt.Println(<-messages)
+	fmt.Println(<-messages)
+	fmt.Println(<-messages)
 }
