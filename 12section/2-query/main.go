@@ -3,9 +3,10 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"log"
+
 	_ "github.com/mattn/go-sqlite3"
 	"golang.org/x/crypto/bcrypt"
-	"log"
 )
 
 var schema = `
@@ -35,7 +36,8 @@ func main() {
 	}
 
 	fmt.Println("database connection established")
-
+	createTable(db)
+	createUser(db, "123", "234", "234")
 }
 
 func createTable(db *sql.DB) {

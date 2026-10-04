@@ -16,7 +16,16 @@ var public embed.FS
 //go:embed public
 var public2 embed.FS
 
+//go:embed data.txt
+var data string
+
+//go:embed data.txt
+var data_bytes []byte
+
 func main() {
+
+	fmt.Println(string(data_bytes))
+	fmt.Println(data)
 
 	data, err := public.ReadFile("public/data.txt")
 	fmt.Println(data)
@@ -29,4 +38,5 @@ func main() {
 	fmt.Println(data)
 
 	fmt.Println(string(data))
+
 }

@@ -10,12 +10,12 @@ import (
 type user struct {
 	Name     string `json:"name" xml:"name"`
 	Age      int    `json:"age" xml:"age"`
-	Phone    string `json:"phone" xml:"phone_number"`
+	Phone    string `json:"phone_number" xml:"phone_number"`
 	Password string `json:"-" xml:"-"`
 	IsActive bool   `json:"active" xml:"active"`
 }
 
-var payload = `{"name":"John Smith","age":42,"phone":"","active":true}`
+var payload = `{"name":"John Smith","age":42,"phone_number":"123","active":true}`
 
 func main() {
 

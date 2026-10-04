@@ -3,8 +3,9 @@ package repository
 import (
 	"context"
 	"database/sql"
-	"golang.org/x/crypto/bcrypt"
 	"learning-go/12section/6-repository/models"
+
+	"golang.org/x/crypto/bcrypt"
 )
 
 type UserRepository interface {
@@ -62,13 +63,16 @@ func (r *SQLUserRepository) CreateUser(name, email, hashedPassword, avatar strin
 
 	defer profileStm.Close()
 	_, err = profileStm.Exec(userID, avatar)
+
 	if err != nil {
 		return 0, err
 	}
 	err = tx.Commit()
+
 	if err != nil {
 		return 0, err
 	}
+
 	return userID, nil
 }
 

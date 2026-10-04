@@ -5,10 +5,11 @@ import (
 	"database/sql"
 	//"encoding/json"
 	"fmt"
-	_ "github.com/mattn/go-sqlite3"
-	"golang.org/x/crypto/bcrypt"
 	"log"
 	"time"
+
+	_ "github.com/mattn/go-sqlite3"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type User struct {
@@ -59,20 +60,25 @@ func main() {
 
 func createUserWithCtx(ctx context.Context, db *sql.DB, name, email, hashedPassword string) (int64, error) {
 	stmt, err := db.Prepare(`INSERT INTO users (name, email, hashed_password) VALUES (?, ?, ?)`)
+
 	if err != nil {
 		return 0, err
 	}
+
 	defer stmt.Close()
 
 	hp, err := bcrypt.GenerateFromPassword([]byte(hashedPassword), bcrypt.DefaultCost)
+
 	if err != nil {
 		return 0, err
 	}
 
 	result, err := stmt.ExecContext(ctx, name, email, string(hp))
+
 	if err != nil {
 		return 0, err
 	}
+
 	return result.LastInsertId()
 }
 
